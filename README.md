@@ -1,10 +1,4 @@
 # Web_Scrapping
-# My journey in scrapping the WEB.
+Wikipedia Blog web scrapping: It is my attemt to take the headings in the Content section of the page.
 
-url = 'https://en.wikipedia.org/wiki/Blog'
-html_text = requests.get(url).text
-soup = BeautifulSoup(html_text, 'lxml')
-content = soup.find('div', class_ = 'toc').ul
-#print(content)
-for topic in content.find_all('li'):
-    print(topic.a['href'][1:])
+
