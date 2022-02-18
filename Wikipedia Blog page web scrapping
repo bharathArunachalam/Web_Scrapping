@@ -1,3 +1,7 @@
+import requests
+from bs4 import BeautifulSoup
+import lxml
+
 url = 'https://en.wikipedia.org/wiki/Blog'
 html_text = requests.get(url).text
 soup = BeautifulSoup(html_text, 'lxml')
