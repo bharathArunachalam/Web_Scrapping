@@ -1,11 +1,21 @@
+""" Webscrapping exercise 1: 
+url: 'https://en.wikipedia.org/wiki/Blog'
+Q: From the above url extract the items under the 'content' section of the webpage."""
+
 import requests
 from bs4 import BeautifulSoup
 import lxml
 
+
 url = 'https://en.wikipedia.org/wiki/Blog'
 html_text = requests.get(url).text
+#requests: pulls the html of the webpage. type:<class 'requests.models.Response'> object, .text converts the response object to 'str'
+
 soup = BeautifulSoup(html_text, 'lxml')
+#a BeautifulSoup object is stored in 'soup' variable. BeautifulSoup object is a complex tree stucture in python, it helps to access items that have parent, child, sibling relationships.
+
 content = soup.find('div', class_ = 'toc').ul
-#print(content)
+#reach a node from where we are going to extract the information.
+
 for topic in content.find_all('li'):
     print(topic.a['href'][1:])
