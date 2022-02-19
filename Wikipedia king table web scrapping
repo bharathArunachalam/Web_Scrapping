@@ -1,3 +1,4 @@
+#Method 1
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
@@ -27,3 +28,9 @@ for content in contents.find_all('tr'):
         king_table = king_table.append({'Monarch': monarch, 'House': house, 'Title': title, 'Kingdom': kingdom, 'Established': established}, ignore_index=True)
 
 king_table
+
+#Method 2
+import pandas as pd
+url = 'https://en.wikipedia.org/wiki/King'
+table = pd.read_html(url)
+table[2]
