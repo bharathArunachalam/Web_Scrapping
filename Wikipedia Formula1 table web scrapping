@@ -1,3 +1,7 @@
+""" Webscrapping exercise 2: 
+url: 'https://en.wikipedia.org/wiki/Formula_One'
+Q: From the above url extract the items from the table 'Points system' section of the webpage."""
+
 import requests
 from bs4 import BeautifulSoup
 import html5lib
@@ -11,7 +15,7 @@ tables = soup.find_all('table', class_ = 'wikitable')
 table = tables[1]
 table
 row_column = table.find_all('tr')
-print("Fininshing Positions")
+#print("Fininshing Positions")
 for index, item in enumerate(row_column[0].find_all('th')):
     print(item.text.strip())
 print("\nPoints awarded for respective fininshing Positions")
