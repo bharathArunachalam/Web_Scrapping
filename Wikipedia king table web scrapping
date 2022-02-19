@@ -1,3 +1,7 @@
+""" Webscrapping exercise 3: 
+url: 'https://en.wikipedia.org/wiki/King'
+Q: From the above url make a dataframe of the 3rd table in the webpage."""
+
 #Method 1
 import requests
 from bs4 import BeautifulSoup
