@@ -1,0 +1,29 @@
+import requests
+from bs4 import BeautifulSoup
+import pandas as pd
+
+king_table = pd.DataFrame(columns= ['Monarch', 'House', 'Title', 'Kingdom', 'Established'])
+url = 'https://en.wikipedia.org/wiki/King'
+html_text = requests.get(url).text
+soup = BeautifulSoup(html_text, 'lxml')
+tables = soup.find_all('table')
+len(tables)
+
+#locate the table
+table = tables[2]
+contents = table.find('tbody')
+
+#access each row, then each element of the row
+for content in contents.find_all('tr'):
+    column = content.find_all('td')
+    if column == []:
+        pass
+    else:
+        monarch = column[0].text.strip()
+        house = column[1].text.strip()
+        title = column[2].text.strip()
+        kingdom = column[3].text.strip()
+        established = column[4].text.strip()
+        king_table = king_table.append({'Monarch': monarch, 'House': house, 'Title': title, 'Kingdom': kingdom, 'Established': established}, ignore_index=True)
+
+king_table
